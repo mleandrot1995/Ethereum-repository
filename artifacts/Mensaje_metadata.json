@@ -1,0 +1,103 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "mensaje",
+						"type": "string"
+					}
+				],
+				"name": "Mensaje_MensajeActualizado",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getMensaje",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_mensaje",
+						"type": "string"
+					}
+				],
+				"name": "setMensaje",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "i3arba - 77 Innovation Labs ",
+			"custom:security": "Este es un contrato educativo y no debe ser usado en producción ",
+			"kind": "dev",
+			"methods": {
+				"getMensaje()": {
+					"returns": {
+						"_0": "_mensaje almacenado"
+					}
+				}
+			},
+			"title": "Contrato Mensaje ",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"Mensaje_MensajeActualizado(string)": {
+					"notice": "evento emitido cuando el mensaje es actualizado"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"getMensaje()": {
+					"notice": "función get para devolver el mensaje almacenado"
+				}
+			},
+			"notice": "Este contrato es parte del primer proyecto del Ethereum Developer Pack ",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"modulo2/proyecto1/mensaje.sol": "Mensaje"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"modulo2/proyecto1/mensaje.sol": {
+			"keccak256": "0x857485dde27fc379c3de5ba696bb481ae8f7413459df16e8c1b883a3d5dd9ffc",
+			"urls": [
+				"bzz-raw://8a946699debfd3d7785fdc247da00f74a9b2e2918c7aae7eee2005758f11b066",
+				"dweb:/ipfs/QmezmMCXWpwivg1YxsZYsxaUYEykrVaRcJzX2Ku6LuSxUu"
+			]
+		}
+	},
+	"version": 1
+}

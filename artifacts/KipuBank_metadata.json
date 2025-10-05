@@ -1,0 +1,455 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_LimitePorBanco",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_LimiteRetiroPorTransaccion",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "CantidadIgualACero",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "Requerido",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Disponible",
+						"type": "uint256"
+					}
+				],
+				"name": "ExcedeBalance",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "Requerido",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Remanente",
+						"type": "uint256"
+					}
+				],
+				"name": "ExcedeCapacidadPorBanco",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "Requerido",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "LimitePorTransaccion",
+						"type": "uint256"
+					}
+				],
+				"name": "ExcedeLimitePorTransaccion",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "Reentrada",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "Recepctor",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Cantidad",
+						"type": "uint256"
+					}
+				],
+				"name": "TransferenciaFallida",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "Cuenta",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "Cantidad",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "BalanceResultante",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "DepositoTotalGlobal",
+						"type": "uint256"
+					}
+				],
+				"name": "Depositado",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "Cuenta",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "Cantidad",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "BalanceResultante",
+						"type": "uint256"
+					}
+				],
+				"name": "Retiro",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "CapacidadDeDepositoRestante",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "Deposito",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "LimitePorBanco",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "LimiteRetiroPorTransaccion",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "NumeroDeDepositos",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "NumeroDeRetiros",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "Cantidad",
+						"type": "uint256"
+					}
+				],
+				"name": "RetiroSaldo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "Cuenta",
+						"type": "address"
+					}
+				],
+				"name": "SaldoDeCuenta",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "TotalDepositado",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"author": "Leandro Toloza",
+			"errors": {
+				"ExcedeBalance(uint256,uint256)": [
+					{
+						"params": {
+							"Disponible": "Saldo disponible del usuario.",
+							"Requerido": "Monto solicitado a retirar."
+						}
+					}
+				],
+				"ExcedeCapacidadPorBanco(uint256,uint256)": [
+					{
+						"params": {
+							"Remanente": "Capacidad restante del banco.",
+							"Requerido": "Monto a depositar."
+						}
+					}
+				],
+				"ExcedeLimitePorTransaccion(uint256,uint256)": [
+					{
+						"params": {
+							"LimitePorTransaccion": "Límite permitido por transacción.",
+							"Requerido": "Monto solicitado a retirar."
+						}
+					}
+				],
+				"TransferenciaFallida(address,uint256)": [
+					{
+						"params": {
+							"Cantidad": "Monto en wei.",
+							"Recepctor": "Quien recibe envio."
+						}
+					}
+				]
+			},
+			"events": {
+				"Depositado(address,uint256,uint256,uint256)": {
+					"params": {
+						"BalanceResultante": "Saldo actualizado",
+						"Cantidad": "Monto depositado",
+						"Cuenta": "Direccion de quien deposita",
+						"DepositoTotalGlobal": "Total acumulado depositado"
+					}
+				},
+				"Retiro(address,uint256,uint256)": {
+					"params": {
+						"BalanceResultante": "Saldo actualizado",
+						"Cantidad": "Monto retirado",
+						"Cuenta": "Direccion de quien retiro"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"RetiroSaldo(uint256)": {
+					"params": {
+						"Cantidad": "Monto a retirar"
+					}
+				},
+				"SaldoDeCuenta(address)": {
+					"params": {
+						"Cuenta": "Dirección"
+					}
+				},
+				"constructor": {
+					"params": {
+						"_LimitePorBanco": "Límite de depositos por banco",
+						"_LimiteRetiroPorTransaccion": "Limite retro por transaccion"
+					}
+				}
+			},
+			"title": "KipuBank ",
+			"version": 1
+		},
+		"userdoc": {
+			"errors": {
+				"CantidadIgualACero()": [
+					{
+						"notice": "erro cuando se intenta depositar cero (0) wei"
+					}
+				],
+				"ExcedeBalance(uint256,uint256)": [
+					{
+						"notice": "El retiro solicitado excede el saldo del usuario."
+					}
+				],
+				"ExcedeCapacidadPorBanco(uint256,uint256)": [
+					{
+						"notice": "El depósito supera el límite del banco."
+					}
+				],
+				"ExcedeLimitePorTransaccion(uint256,uint256)": [
+					{
+						"notice": "El retiro solicitado excede el límite por transacción."
+					}
+				],
+				"Reentrada()": [
+					{
+						"notice": "Reentrada detectada."
+					}
+				],
+				"TransferenciaFallida(address,uint256)": [
+					{
+						"notice": "Falló la transferencia"
+					}
+				]
+			},
+			"events": {
+				"Depositado(address,uint256,uint256,uint256)": {
+					"notice": "Emite cada deposito ejecutado"
+				},
+				"Retiro(address,uint256,uint256)": {
+					"notice": "Emite cada retiro ejecutado"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"CapacidadDeDepositoRestante()": {
+					"notice": "Capacidad de deposito restante"
+				},
+				"Deposito()": {
+					"notice": "Deposita ETH en la boveda"
+				},
+				"LimitePorBanco()": {
+					"notice": "Limite de depositos del banco"
+				},
+				"LimiteRetiroPorTransaccion()": {
+					"notice": "Limite de retiro por transaccion."
+				},
+				"NumeroDeDepositos()": {
+					"notice": "Numero total de depositos realizados"
+				},
+				"NumeroDeRetiros()": {
+					"notice": "Numero total de retiros realizados"
+				},
+				"RetiroSaldo(uint256)": {
+					"notice": "Retiro de tla boveda depende del limite por transaccion"
+				},
+				"SaldoDeCuenta(address)": {
+					"notice": "Muestra saldo"
+				},
+				"TotalDepositado()": {
+					"notice": "Total depositado "
+				},
+				"constructor": {
+					"notice": "Inserta un nuevo banco con tope y un limite por retiro"
+				}
+			},
+			"notice": "Boveda de Ethers que permite depositar y transferir ETH con un limite de banco. Tiene un umbral de retiro que no cambia (inmutable) . Contiene patrones de seguridad y emite eventos",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TpFinalModulo2.sol": "KipuBank"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/TpFinalModulo2.sol": {
+			"keccak256": "0x54cac64204fe6067d63d0e415fca93734a8bcf34e0a1ff52d8a43d6e7c53360f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5f0b48e397a5576c1fcb9d7bdf988f3cc19ff9e96de78c2be1f638171e632558",
+				"dweb:/ipfs/QmSCaWJuKWXnFPaoGDTbiMybGnWskfqsMyoBeVRB5vwjYP"
+			]
+		}
+	},
+	"version": 1
+}
