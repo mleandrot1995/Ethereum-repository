@@ -1,28 +1,29 @@
-REMIX DEFAULT WORKSPACE
+KipuBank — Bóveda de ETH
 
-Remix default workspace is present when:
-i. Remix loads for the very first time 
-ii. A new workspace is created with 'Default' template
-iii. There are no files existing in the File Explorer
+Bóveda simple de ETH nativo donde cada usuario mantiene su saldo personal.
+Incluye:
 
-This workspace contains 3 directories:
+Capacidad por Banco
+Limite por transacción
+Eventos y errores personalizados 
+Protección anti-reentradas.
+Contadores globales de depósitos y retiros.
 
-1. 'contracts': Holds three contracts with increasing levels of complexity.
-2. 'scripts': Contains four typescript files to deploy a contract. It is explained below.
-3. 'tests': Contains one Solidity test file for 'Ballot' contract & one JS test file for 'Storage' contract.
+Como interactuar con el contrato:
 
-SCRIPTS
+Variables inmutables:
+LimitePorBanco: tope global de depósitos (wei).
+LimiteRetiroPorTransaccion: límite por retiro (wei).
 
-The 'scripts' folder has four typescript files which help to deploy the 'Storage' contract using 'web3.js' and 'ethers.js' libraries.
+Mapeo de saldos: balances por usuario.
 
-For the deployment of any other contract, just update the contract name from 'Storage' to the desired contract and provide constructor arguments accordingly 
-in the file `deploy_with_ethers.ts` or  `deploy_with_web3.ts`
+Funciones públicas/externas (nombres pueden variar según tu contrato):
+deposit() (payable) / Deposito(): deposita ETH a tu bóveda.
+RetiroSaldo(uint256 Cantidad): retira con umbral por tx.
+SaldoDeCuenta(address): consulta de saldo.
+CapacidadDeDepositoRestante(): capacidad restante del banco.
+receive() permite depositar enviando ETH directo al contrato.
 
-In the 'tests' folder there is a script containing Mocha-Chai unit tests for 'Storage' contract.
+Eventos: Depositado y Retiro.
 
-To run a script, right click on file name in the file explorer and click 'Run'. Remember, Solidity file must already be compiled.
-Output from script will appear in remix terminal.
-
-Please note, require/import is supported in a limited manner for Remix supported modules.
-For now, modules supported by Remix are ethers, web3, swarmgw, chai, multihashes, remix and hardhat only for hardhat.ethers object/plugin.
-For unsupported modules, an error like this will be thrown: '<module_name> module require is not supported by Remix IDE' will be shown.
+Errores personalizados para todas las validaciones.
